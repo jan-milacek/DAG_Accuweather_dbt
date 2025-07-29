@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: weather_db
+    description: Raw weather data from AccuWeather API
+    schema: weather_db_schema
+    tables:
+      - name: historical_weather_data
+        description: Hourly weather observations from AccuWeather
+        columns:
+          - name: id
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: observation_date
+            description: Timestamp of weather observation
+            tests:
+              - not_null
+          - name: temperature
+            description: Temperature in Celsius
+            tests:
+              - not_null
+          - name: condition
+            description: Weather condition description
+          - name: fetch_date
+            description: Date when data was collected
+            tests:
+              - not_null
+          - name: created_at
+            description: Record creation timestamp
